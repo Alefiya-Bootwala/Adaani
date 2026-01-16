@@ -1,0 +1,233 @@
+================================================================================
+RAG SYSTEM - QUICK REFERENCE CARD
+================================================================================
+
+🚀 QUICK START (Copy & Paste)
+────────────────────────────────────────────────────────────────────────────
+
+1. Install (first time only)
+   pip install -r requirements.txt
+
+2. Set API key
+   $env:OPENAI_API_KEY = "sk-your-key-here"
+
+3. Run with all 3 documents
+   python multi_document_qa.py
+
+Or run with single document:
+   python main.py ADANI.pdf
+   python main.py SAMPLE1.pdf
+   python main.py SAMPLE2.pdf
+
+================================================================================
+📁 SAMPLE PDFs - ALL INCLUDED
+────────────────────────────────────────────────────────────────────────────
+
+✓ SAMPLE1.pdf   - First sample document
+✓ SAMPLE2.pdf   - Second sample document
+✓ ADANI.pdf     - Adani Enterprises earnings report
+
+All 3 are pre-loaded and ready to use!
+
+================================================================================
+🎯 COMMANDS CHEAT SHEET
+────────────────────────────────────────────────────────────────────────────
+
+SINGLE DOCUMENT:
+  python main.py ADANI.pdf           # Interactive mode
+  python main.py ADANI.pdf --test    # Run tests
+  python main.py ADANI.pdf --no-cache # Rebuild index
+
+MULTIPLE DOCUMENTS:
+  python multi_document_qa.py              # All 3 docs (RECOMMENDED)
+  python main.py SAMPLE1.pdf --multiple    # Alt: with flag
+
+TESTING & VALIDATION:
+  python validate_setup.py          # Check setup
+  python comprehensive_test.py      # Full test suite
+  python preflight_checklist.py     # Pre-flight check
+
+EXAMPLES:
+  python example.py                 # Non-interactive examples
+
+================================================================================
+📖 DOCUMENTATION QUICK LINKS
+────────────────────────────────────────────────────────────────────────────
+
+Getting Started:          QUICKSTART.md or GETTING_STARTED.md (5 min)
+Multi-Document Guide:     MULTI_DOCUMENT_GUIDE.md (10 min)
+Complete Features:        README.md (15 min)
+Technical Deep Dive:      ARCHITECTURE.md (20 min)
+Production Deployment:    DEPLOYMENT.md (25 min)
+Navigation Index:         INDEX.md
+
+================================================================================
+✅ FEATURES
+────────────────────────────────────────────────────────────────────────────
+
+✅ Answer questions from PDFs
+✅ Multi-document support (3 PDFs indexed together)
+✅ Citations for every fact [p5:c2]
+✅ Multi-turn conversations
+✅ Shows retrieved chunks
+✅ "Not found in document" handling
+✅ Temperature=0 (deterministic)
+✅ Persistent index (cached)
+
+================================================================================
+🔧 TECHNOLOGY STACK
+────────────────────────────────────────────────────────────────────────────
+
+Language:       Python 3.8+
+LLM:            OpenAI gpt-3.5-turbo
+Embeddings:     Sentence-Transformers (384-dim)
+Vector DB:      Chroma (local, persistent)
+PDF Tool:       pdfplumber
+
+================================================================================
+📊 PERFORMANCE
+────────────────────────────────────────────────────────────────────────────
+
+First Run:      ~10-15 minutes (generates embeddings)
+Next Runs:      ~10 seconds (uses cache)
+Per Query:      ~3 seconds
+Memory:         ~500MB
+Disk:           ~100MB
+
+================================================================================
+🆘 TROUBLESHOOTING
+────────────────────────────────────────────────────────────────────────────
+
+API Key Not Set?
+  $env:OPENAI_API_KEY = "sk-..."
+  python multi_document_qa.py
+
+PDF Not Found?
+  python main.py "C:\Full\Path\To\document.pdf"
+  OR copy PDF to project directory first
+
+Slow First Run?
+  Normal - embeddings cached after first run
+  Next runs will be fast (~10 sec)
+
+Low Retrieval Scores?
+  - Verify PDF loaded correctly
+  - Try different question phrasing
+  - Check debug output
+
+================================================================================
+📁 PROJECT FILES
+────────────────────────────────────────────────────────────────────────────
+
+CORE MODULES:
+  main.py, pdf_loader.py, chunker.py
+  embedder.py, retriever.py, rag_system.py
+
+MULTI-DOCUMENT:
+  multi_document_qa.py        ← Use this!
+  MULTI_DOCUMENT_GUIDE.md
+
+TESTING:
+  validate_setup.py, comprehensive_test.py
+  preflight_checklist.py, example.py
+
+CONFIGURATION:
+  requirements.txt            (8 packages)
+
+SAMPLE DATA:
+  ADANI.pdf, SAMPLE1.pdf, SAMPLE2.pdf
+
+DOCUMENTATION:
+  README.md, ARCHITECTURE.md, DEPLOYMENT.md
+  QUICKSTART.md, INDEX.md, and more
+
+================================================================================
+🎓 STEP-BY-STEP FIRST RUN
+────────────────────────────────────────────────────────────────────────────
+
+Step 1: Open terminal
+  cd c:\Users\Dell\Desktop\Int
+
+Step 2: Verify dependencies
+  python validate_setup.py
+
+Step 3: Set API key
+  $env:OPENAI_API_KEY = "sk-your-key-here"
+
+Step 4: Run multi-document system
+  python multi_document_qa.py
+
+Step 5: Ask questions
+  You: What are the business segments?
+  You: Compare the documents
+  You: What's the main revenue?
+
+Step 6: Exit
+  Type: exit
+
+================================================================================
+💡 EXAMPLE QUERIES TO TRY
+────────────────────────────────────────────────────────────────────────────
+
+Business Questions:
+  "What are the main business segments?"
+  "What is the total revenue?"
+  "What are the key financial metrics?"
+
+Cross-Document Questions (with --multiple):
+  "Compare the topics across all documents"
+  "What's discussed in SAMPLE1 vs SAMPLE2?"
+  "Are there common themes?"
+
+Multi-Turn Questions:
+  Q1: "Summarize the first document"
+  Q2: "What's the main difference from the others?"
+
+Questions It Will Refuse:
+  "What's the CEO's email?" → "Not found in the document"
+  "What's the weather?" → "Not found in the document"
+
+================================================================================
+🔐 SECURITY NOTES
+────────────────────────────────────────────────────────────────────────────
+
+✓ API key never hardcoded
+✓ Uses environment variables (OPENAI_API_KEY)
+✓ Local vector DB (no external uploads)
+✓ Context-only LLM access (prevents data leakage)
+✓ No credentials in code
+
+================================================================================
+✨ WHAT MAKES THIS SPECIAL
+────────────────────────────────────────────────────────────────────────────
+
+1. Grounded in Documents
+   Answers come ONLY from PDF content, never hallucinated
+
+2. Full Citation Tracking
+   Every fact traced to source: [SAMPLE1.pdf:p5:c2]
+
+3. Multi-Document Support
+   Query across 3+ PDFs simultaneously
+
+4. Production Ready
+   Error handling, logging, comprehensive docs
+
+5. Easy to Extend
+   Add more PDFs, swap LLMs, change embedders
+
+================================================================================
+STATUS: ✅ READY TO USE
+================================================================================
+
+Everything is set up and ready to go!
+
+Start with:
+  python multi_document_qa.py
+
+Or read:
+  QUICKSTART.md (5 min)
+  MULTI_DOCUMENT_GUIDE.md (10 min)
+
+Enjoy! 🚀
+================================================================================

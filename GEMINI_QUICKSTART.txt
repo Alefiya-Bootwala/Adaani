@@ -1,0 +1,115 @@
+================================================================================
+GEMINI API SETUP - QUICK GUIDE
+================================================================================
+
+✅ System updated to use Google Gemini API
+✅ Free API tier available
+✅ No billing required to start
+
+================================================================================
+STEP 1: GET YOUR GEMINI API KEY
+================================================================================
+
+1. Go to: https://aistudio.google.com/app/apikey
+2. Click "Get API Key"
+3. Follow prompts to create API key
+4. Copy your API key (looks like: AIzaSy...)
+
+================================================================================
+STEP 2: SET ENVIRONMENT VARIABLE
+================================================================================
+
+Open PowerShell and run:
+
+$env:GOOGLE_API_KEY = "your-api-key-here"
+
+Example:
+$env:GOOGLE_API_KEY = "AIzaSyDxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+================================================================================
+STEP 3: INSTALL DEPENDENCIES
+================================================================================
+
+pip install -r requirements.txt
+
+This installs:
+  ✓ google-generativeai (Gemini API)
+  ✓ pdfplumber (PDF processing)
+  ✓ chromadb (Vector database)
+  ✓ sentence-transformers (Embeddings)
+
+================================================================================
+STEP 4: RUN THE SYSTEM
+================================================================================
+
+Single document:
+  python main.py ADANI.pdf
+
+Multiple documents (recommended):
+  python multi_document_qa.py
+
+With tests:
+  python main.py ADANI.pdf --test
+
+================================================================================
+WHAT CHANGED FROM OPENAI
+================================================================================
+
+Before (OpenAI):
+  API Key: OPENAI_API_KEY
+  Model: gpt-3.5-turbo
+  Package: openai==1.3.0
+
+Now (Gemini):
+  API Key: GOOGLE_API_KEY
+  Model: gemini-pro
+  Package: google-generativeai==0.3.0
+
+All other features UNCHANGED:
+  ✓ Document grounding
+  ✓ Citations
+  ✓ Multi-turn conversations
+  ✓ Retrieval visibility
+
+================================================================================
+FEATURES
+================================================================================
+
+✓ Free tier available (Google Gemini)
+✓ No credit card required to start
+✓ Good quality responses
+✓ Fast inference
+✓ Same RAG functionality as before
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Issue: "GOOGLE_API_KEY not set"
+Solution: $env:GOOGLE_API_KEY = "your-key"
+
+Issue: API Key not working
+Solution: Verify key at https://aistudio.google.com/app/apikey
+
+Issue: Rate limits
+Solution: Gemini has free tier limits, wait between queries
+
+Issue: Connection error
+Solution: Check internet connection, verify firewall allows Google API
+
+================================================================================
+RESOURCES
+================================================================================
+
+Get API Key: https://aistudio.google.com/app/apikey
+Documentation: https://ai.google.dev/docs
+Pricing: https://ai.google.dev/pricing (free tier available)
+Support: https://ai.google.dev/
+
+================================================================================
+READY TO GO!
+================================================================================
+
+1. Set GOOGLE_API_KEY
+2. Run: python multi_document_qa.py
+3. Ask questions about the PDFs!
